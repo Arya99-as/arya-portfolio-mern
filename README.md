@@ -21,6 +21,39 @@ Preserves 100% of the original **IDE / Terminal aesthetic**, design tokens, and 
 
 ---
 
+## 🔒 Production Environment Variables Breakdown
+
+### 1. Vercel — Frontend (Client)
+On Vercel, **ONLY** add this single frontend variable:
+
+| Key | Value | Notes |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | `https://YOUR-RENDER-BACKEND-URL.onrender.com/api` | Points React to your Render Express backend |
+
+❌ **DO NOT ADD TO VERCEL**: `PORT`, `MONGO_URI`, `CLIENT_URL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `CONTACT_EMAIL`.
+
+---
+
+### 2. Render — Backend (Server)
+On Render, add all your server-side environment variables:
+
+```env
+PORT=10000
+NODE_ENV=production
+MONGO_URI=mongodb+srv://arya_admin:<password>@portfolio-cluster.mongodb.net/portfolio_db?retryWrites=true&w=majority
+CLIENT_URL=https://your-vercel-site.vercel.app
+
+# SMTP Email Dispatch
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=sutararya.6336@gmail.com
+SMTP_PASSWORD=your_new_gmail_app_password
+CONTACT_EMAIL=sutararya.6336@gmail.com
+```
+
+---
+
 ## 📁 Project Directory Structure
 
 ```text
@@ -60,6 +93,8 @@ portfolio/
 │   ├── middleware/
 │   │   ├── errorMiddleware.js   # Centralized error handler
 │   │   └── authMiddleware.js    # JWT admin security header middleware
+│   ├── services/
+│   │   └── emailService.js      # Nodemailer SMTP email service
 │   ├── seed.js                  # Pre-populated datasets for Projects, Achievements, Gallery
 │   ├── server.js                # Main Express server listener (Port 5050)
 │   └── package.json
@@ -72,93 +107,19 @@ portfolio/
 
 ---
 
-## 🌐 Express REST API Endpoints
+## 🛠️ How to Run & Test locally
 
-### 1. Contact API
-- `POST /api/contact` — Validate & store visitor contact message in MongoDB
-- `GET /api/contact` — Retrieve all stored contact messages for admin/private side
-
-### 2. Projects API
-- `GET /api/projects` — Fetch all portfolio projects from MongoDB
-- `GET /api/projects/:id` — Fetch single project by ID
-- `POST /api/projects` — Create a new project item in MongoDB
-- `PUT /api/projects/:id` — Update existing project in MongoDB
-- `DELETE /api/projects/:id` — Delete project from MongoDB
-
-### 3. Achievements API
-- `GET /api/achievements` — Fetch all honors & achievements from MongoDB
-- `POST /api/achievements` — Create a new achievement in MongoDB
-- `PUT /api/achievements/:id` — Update existing achievement in MongoDB
-- `DELETE /api/achievements/:id` — Delete achievement from MongoDB
-
-### 4. Gallery API
-- `GET /api/gallery` — Fetch gallery items from MongoDB
-- `POST /api/gallery` — Create gallery item (title, category, image URL, description)
-- `DELETE /api/gallery/:id` — Delete gallery item from MongoDB
-
-### 5. Portfolio Statistics API
-- `GET /api/stats` — Calculate live database document counts (`projects`, `achievements`, `gallery`, `messages`)
-
----
-
-## ⚙️ Environment Configuration
-
-Create or verify `.env` in the root and `/server` folder:
-
-```env
-PORT=5050
-MONGO_URI=mongodb://127.0.0.1:27017/portfolio_db
-CLIENT_URL=http://localhost:5173
-ADMIN_EMAIL=sutararya.6336@gmail.com
-ADMIN_PASSWORD=AryaSutarAdmin@2026!
-JWT_SECRET=arya_sutar_jwt_private_key_secure_2026
-```
-
----
-
-## 🛠️ How to Run & Test the Application
-
-### 1. Start MongoDB Database
-Ensure MongoDB Community Server is running on your machine:
-```bash
-# Verify local MongoDB service
-mongod
-```
-
-### 2. Start Express Backend Server
-In the server terminal:
+### 1. Start Express Backend Server
 ```bash
 cd server
 npm install
 npm run dev
 ```
-Output:
-`[Express Backend] Server listening on http://localhost:5050`
-`[MongoDB] Connected successfully: 127.0.0.1`
 
-### 3. Start React + Vite Frontend Client
-In a new terminal:
+### 2. Start React Frontend Client
 ```bash
 cd client
 npm install
 npm run dev
 ```
 Runs on `http://localhost:5173`.
-
-### 4. Test API Endpoints
-You can test the APIs in PowerShell or browser:
-
-```powershell
-# Health Check
-Invoke-RestMethod -Uri 'http://localhost:5050/api/health'
-
-# Portfolio Stats
-Invoke-RestMethod -Uri 'http://localhost:5050/api/stats'
-
-# Fetch Projects
-Invoke-RestMethod -Uri 'http://localhost:5050/api/projects'
-
-# Submit Contact Message
-$body = @{ name='Visitor Name'; email='visitor@example.com'; subject='Internship Opportunity'; message='Hello Arya' } | ConvertTo-Json
-Invoke-RestMethod -Uri 'http://localhost:5050/api/contact' -Method Post -Body $body -ContentType 'application/json'
-```
