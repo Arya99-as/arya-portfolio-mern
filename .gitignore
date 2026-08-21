@@ -1,0 +1,24 @@
+# Environment & Secret files
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+
+# Node dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build & Dist output
+dist/
+client/dist/
+server/dist/
+
+# Local Database & Data Storage
+server/data/
+*.log
+
+# OS & System files
+.DS_Store
+Thumbs.db

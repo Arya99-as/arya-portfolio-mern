@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arya A. Sutar | Computer Science Engineer & Developer</title>
+  <meta name="description" content="Official Portfolio of Arya A. Sutar, B.Tech Computer Science Engineering Student specializing in Software Development, Web Development, AI/Computer Vision, and Data Science.">
+  <meta name="keywords" content="Arya A. Sutar, Computer Science Engineer, Software Developer, Web Developer, AI Computer Vision, Python, JavaScript, React, Portfolio, DYPCET">
+  <meta name="author" content="Arya A. Sutar">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Arya A. Sutar | Computer Science Engineer & Developer">
+  <meta property="og:description" content="B.Tech CS Engineering student building web platforms, AI vision models, and leading technical & campus media teams.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- FLOATING GLASS CAPSULE NAVIGATION -->
+  <header class="floating-capsule-wrapper" id="navbar">
+    <div class="floating-capsule-nav">
+      
+      <!-- Cybersecurity Cartoon Avatar & Futuristic Logo -->
+      <div class="navbar-logo-group">
+        <a href="#hero" class="capsule-avatar-link" aria-label="Cybersecurity Portfolio">
+          <img src="assets/images/cybersecurity_avatar.jpg" alt="Cybersecurity Portfolio" class="capsule-avatar-img">
+        </a>
+        <a href="#hero" class="capsule-logo" aria-label="Arya A. Sutar Home">
+          <span class="logo-glow-symbol">&lt;AS/&gt;</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="capsule-menu-desktop" aria-label="Main Navigation">
+        <ul class="capsule-nav-list">
+          <li class="capsule-nav-item"><a href="#hero" class="capsule-nav-link active" data-section="hero"><span>Home</span></a></li>
+          <li class="capsule-nav-item"><a href="#about" class="capsule-nav-link" data-section="about"><span>About</span></a></li>
+          <li class="capsule-nav-item"><a href="#skills" class="capsule-nav-link" data-section="skills"><span>Skills</span></a></li>
+          <li class="capsule-nav-item"><a href="#projects" class="capsule-nav-link" data-section="projects"><span>Projects</span></a></li>
+          <li class="capsule-nav-item"><a href="#experience" class="capsule-nav-link" data-section="experience"><span>Experience</span></a></li>
+          <li class="capsule-nav-item"><a href="#education" class="capsule-nav-link" data-section="education"><span>Education</span></a></li>
+          <li class="capsule-nav-item"><a href="#achievements" class="capsule-nav-link" data-section="achievements"><span>Achievements</span></a></li>
+          <li class="capsule-nav-item"><a href="#contact" class="capsule-nav-link" data-section="contact"><span>Contact</span></a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content scroll-reveal">
+          <div class="eyebrow-code">// b.tech cse student, 2023–2027</div>
+          <h1 class="hero-name">Arya A. Sutar</h1>
+          <div class="hero-role-wrapper">
+            <span class="role-prefix">I am a </span>
+            <span class="typed-role" id="typed-role-text"></span><span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-bio">
+            B.Tech Computer Science Engineering student focused on building full-stack web platforms, applying computer vision models, and leading technical teams. Experienced in media coordination and campus event management with a commitment to writing clean, maintainable code.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button class="btn btn-outline btn-view-resume-trigger" id="hero-view-resume-btn">
+              <span>View Resume</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+            <a href="assets/resume/Arya_Sutar_Resume.pdf" class="btn btn-outline" download="Arya_Sutar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span>Download Resume</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+            <a href="#contact" class="link-contact">
+              <span>Contact me &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="hero-socials">
+            <span class="social-label">Connect:</span>
+            <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/arya-sutar-6244942b1" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.instagram.com/aryasutar_" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram Profile">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="mailto:sutararya.6336@gmail.com" class="social-icon" aria-label="Email Arya">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Terminal Window Card -->
+        <div class="hero-terminal-card scroll-reveal delay-1">
+          <div class="terminal-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="terminal-title">bash - arya@dev-workstation:~</div>
+          </div>
+          <div class="terminal-body">
+            <div class="term-line"><span class="prompt">arya@dev:~$</span> <span class="cmd">whoami</span></div>
+            <div class="term-output text-highlight">arya_a_sutar (B.Tech CSE 2023–2027)</div>
+            
+            <div class="term-line"><span class="prompt">arya@dev:~$</span> <span class="cmd">cat focus.txt</span></div>
+            <div class="term-output">
+              • Software Development &amp; Architecture<br>
+              • Web Applications &amp; Full-Stack<br>
+              • AI / Computer Vision &amp; OCR<br>
+              • Data Science &amp; Problem Solving
+            </div>
+
+            <div class="term-line"><span class="prompt">arya@dev:~$</span> <span class="cmd">status --placements</span></div>
+            <div class="term-output status-active">
+              <span class="status-indicator"></span> Open for Placements &amp; Internships (2026/2027)
+            </div>
+
+            <div class="term-line"><span class="prompt">arya@dev:~$</span> <span class="cmd">echo $CURRENT_FOCUS</span></div>
+            <div class="term-output">
+              <span id="terminal-typed"></span><span class="cursor-blink amber-cursor">_</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section section-padding" id="about">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* about.md */</div>
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-grid">
+          
+          <!-- Left Text Intro -->
+          <div class="about-text-content scroll-reveal">
+            <h3 class="about-heading">Engineering solutions with passion, precision, and code.</h3>
+            <p>
+              I am a B.Tech Computer Science &amp; Engineering student (2023–2027) at D.Y. Patil College of Engineering and Technology, Kolhapur. My focus spans software development, web platforms, and applied artificial intelligence including computer vision and OCR invoice extraction.
+            </p>
+            <p>
+              Alongside technical coursework, I have completed a Data Analytics internship at Deloitte and an international AI CCTV &amp; Behavior Analysis internship in Malaysia. I actively serve as Deputy Chief of the Training &amp; Placement Cell, Media Head for MLSA, and lead student competition teams.
+            </p>
+            <p>
+              I am actively seeking placement and internship opportunities where I can apply my problem-solving skills, software engineering knowledge, and collaborative leadership to build impactful software.
+            </p>
+
+            <div class="about-stats-row">
+              <div class="stat-item">
+                <span class="stat-value">8.1</span>
+                <span class="stat-label">B.Tech CGPA</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">3</span>
+                <span class="stat-label">Core Projects</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">4</span>
+                <span class="stat-label">Major Awards</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right JSON Profile Panel -->
+          <div class="about-json-panel scroll-reveal delay-1">
+            <div class="code-window-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="file-name">profile.json</span>
+            </div>
+            
+            <div class="code-window-body">
+              <pre class="json-code"><code><span class="json-brace">{</span>
+    <span class="json-key">"name"</span>: <span class="json-str">"Arya A. Sutar"</span>,
+    <span class="json-key">"role"</span>: <span class="json-str">"Computer Science Engineer &amp; Developer"</span>,
+    <span class="json-key">"institution"</span>: <span class="json-str">"DYPCET, Kolhapur"</span>,
+    <span class="json-key">"degree"</span>: <span class="json-str">"B.Tech CSE (2023–2027)"</span>,
+    <span class="json-key">"cgpa"</span>: <span class="json-num">8.1</span>,
+    <span class="json-key">"email"</span>: <span class="json-str">"sutararya.6336@gmail.com"</span>,
+
+    <span class="json-key">"focus"</span>: <span class="json-bracket">[</span>
+        <span class="json-str">"Software Development"</span>,
+        <span class="json-str">"Web Development (MERN)"</span>,
+        <span class="json-str">"Artificial Intelligence"</span>,
+        <span class="json-str">"Computer Vision"</span>,
+        <span class="json-str">"Data Science"</span>,
+        <span class="json-str">"Problem Solving"</span>
+    <span class="json-bracket">]</span>,
+
+    <span class="json-key">"open_to"</span>: <span class="json-bracket">[</span>
+        <span class="json-str">"Placements"</span>,
+        <span class="json-str">"Software Internships"</span>
+    <span class="json-bracket">]</span>,
+
+    <span class="json-key">"ready_to_relocate"</span>: <span class="json-bool">true</span>
+<span class="json-brace">}</span></code></pre>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills-section section-padding alt-bg" id="skills">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* skills.json */</div>
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Categorized programming languages, web technologies, database systems, AI tools, and core computer science coursework.</p>
+
+        <div class="skills-grid">
+          
+          <!-- Card 1: Programming -->
+          <div class="skill-card scroll-reveal">
+            <div class="skill-card-header">
+              <span class="skill-icon">💻</span>
+              <h3 class="skill-category">Programming</h3>
+            </div>
+            <div class="tag-group">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Web Development -->
+          <div class="skill-card scroll-reveal delay-1">
+            <div class="skill-card-header">
+              <span class="skill-icon">🌐</span>
+              <h3 class="skill-category">Web Development</h3>
+            </div>
+            <div class="tag-group">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Database -->
+          <div class="skill-card scroll-reveal delay-2">
+            <div class="skill-card-header">
+              <span class="skill-icon">🗄️</span>
+              <h3 class="skill-category">Database</h3>
+            </div>
+            <div class="tag-group">
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+
+          <!-- Card 4: AI / Computer Vision (Featured Highlight) -->
+          <div class="skill-card skill-card-ai scroll-reveal">
+            <div class="skill-card-header">
+              <span class="skill-icon">🤖</span>
+              <h3 class="skill-category">AI / Computer Vision</h3>
+              <span class="badge-focus">Featured</span>
+            </div>
+            <div class="tag-group">
+              <span class="tag tag-ai">Python</span>
+              <span class="tag tag-ai">OCR</span>
+              <span class="tag tag-ai">Computer Vision</span>
+            </div>
+          </div>
+
+          <!-- Card 5: UI/UX & Design -->
+          <div class="skill-card scroll-reveal delay-1">
+            <div class="skill-card-header">
+              <span class="skill-icon">🎨</span>
+              <h3 class="skill-category">UI / UX &amp; Design</h3>
+            </div>
+            <div class="tag-group">
+              <span class="tag">Figma</span>
+              <span class="tag">Blender</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Coursework -->
+          <div class="skill-card scroll-reveal delay-2">
+            <div class="skill-card-header">
+              <span class="skill-icon">📚</span>
+              <h3 class="skill-category">Coursework</h3>
+            </div>
+            <div class="tag-group">
+              <span class="tag">Data Structures &amp; Algorithms</span>
+              <span class="tag">Object-Oriented Programming (OOP)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section section-padding" id="projects">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* projects/ */</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Real-world applications built for student collaboration, social content intelligence, and automated tax validation.</p>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: Study Buddy -->
+          <article class="project-card scroll-reveal" style="--card-accent: linear-gradient(135deg, #F2B84B, #E67E22);">
+            <div class="project-thumbnail">
+              <div class="thumb-overlay"></div>
+              <span class="project-initials">SB</span>
+              <div class="project-type-badge">Student Notes Sharing Platform</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Study Buddy</h3>
+              <p class="project-desc">
+                Developed a web-based platform for students to access semester-wise notes, PDFs, and study materials. Implemented secure login, subject filtering, and file upload/download features. Designed an intuitive interface for students, teachers, and administrators.
+              </p>
+              <div class="project-tags">
+                <span class="proj-tag">HTML</span>
+                <span class="proj-tag">CSS</span>
+                <span class="proj-tag">JavaScript</span>
+                <span class="proj-tag">MySQL</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Code</span>
+                </a>
+                <a href="#" class="btn-card-link primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: SocialForge -->
+          <article class="project-card scroll-reveal delay-1" style="--card-accent: linear-gradient(135deg, #5FD3C4, #27AE60);">
+            <div class="project-thumbnail">
+              <div class="thumb-overlay"></div>
+              <span class="project-initials">SF</span>
+              <div class="project-type-badge">AI Instagram Content Intelligence</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">SocialForge</h3>
+              <p class="project-desc">
+                Developed an AI-powered platform for Instagram content optimization and performance analysis. Integrated AI-based caption generation, hashtag suggestions, and best posting time recommendations. Built analytics dashboards to track engagement, trends, and content performance.
+              </p>
+              <div class="project-tags">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">AI / ML</span>
+                <span class="proj-tag">JavaScript</span>
+                <span class="proj-tag">React</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Code</span>
+                </a>
+                <a href="#" class="btn-card-link primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: GST Doctor AI Pro -->
+          <article class="project-card scroll-reveal delay-2" style="--card-accent: linear-gradient(135deg, #9B59B6, #2980B9);">
+            <div class="project-thumbnail">
+              <div class="thumb-overlay"></div>
+              <span class="project-initials">GD</span>
+              <div class="project-type-badge">AI Invoice Validation System</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">GST Doctor AI Pro</h3>
+              <p class="project-desc">
+                Developed an AI-powered GST validation system that extracts invoice data using OCR (Optical Character Recognition) and automatically detects filing errors, preventing tax discrepancies.
+              </p>
+              <div class="project-tags">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">OCR</span>
+                <span class="proj-tag">Computer Vision</span>
+                <span class="proj-tag">AI / ML</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>Code</span>
+                </a>
+                <a href="#" class="btn-card-link primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section section-padding alt-bg" id="experience">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* experience.log */</div>
+        <h2 class="section-title">Experience &amp; Internships</h2>
+        <p class="section-subtitle">Virtual data analytics internships, international computer vision engineering, and technical event leadership.</p>
+
+        <div class="timeline">
+          
+          <!-- Experience Item 1 -->
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Data Analytics Virtual Internship</h3>
+                <span class="timeline-period">[ JULY 2025 ]</span>
+              </div>
+              <div class="org-name">Deloitte</div>
+              <p class="role-desc">
+                Conducted data analytics tasks, dataset exploration, visualization, and strategic reporting to deliver actionable business insights.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="timeline-item scroll-reveal delay-1">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">AI CCTV &amp; Behavior Analysis Intern</h3>
+                <span class="timeline-period">[ 15-DAY INTERNATIONAL INTERNSHIP, MALAYSIA ]</span>
+              </div>
+              <div class="org-name">International AI Technology Program</div>
+              <p class="role-desc">
+                Developed an AI-powered CCTV surveillance system for real-time human detection and behavior analysis using computer vision techniques for activity monitoring and intelligent security alerts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div class="timeline-item scroll-reveal delay-2">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Media Coordinator</h3>
+                <span class="timeline-period">[ JAN 2023 – PRESENT ]</span>
+              </div>
+              <div class="org-name">D.Y. Patil College of Engineering and Technology, Kolhapur</div>
+              <p class="role-desc">
+                Managed video editing, reel creation, and event media coverage for campus activities. Created engaging promotional content that significantly increased event reach and student participation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 4 -->
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Team Leader — Capstone Project Competition</h3>
+                <span class="timeline-period">[ APR 2023 ]</span>
+              </div>
+              <div class="org-name">Department Capstone Showcase</div>
+              <p class="role-desc">
+                Coordinated project sprint tasks, ensured timely technical submissions, and presented the final working system to the faculty panel.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 5 -->
+          <div class="timeline-item scroll-reveal delay-1">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="role-title">Technical Event Organizer</h3>
+                <span class="timeline-period">[ MLSA CLUB ]</span>
+              </div>
+              <div class="org-name">Computer Science Dept., DYPCET</div>
+              <p class="role-desc">
+                Assisted in organizing a coding and technical competition under Microsoft Learn Student Ambassadors (MLSA) for the department.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- POSITIONS OF RESPONSIBILITY SECTION -->
+    <section class="positions-section section-padding" id="positions">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* positions.log */</div>
+        <h2 class="section-title">Positions of Responsibility</h2>
+        <p class="section-subtitle">Leadership roles held across placement cells, ambassador clubs, and departmental organizations.</p>
+
+        <div class="positions-grid">
+          
+          <div class="position-card scroll-reveal">
+            <span class="pos-icon">💼</span>
+            <div class="pos-details">
+              <h3 class="pos-title">Deputy Chief</h3>
+              <span class="pos-org">Training &amp; Placement Cell, DYPCET</span>
+            </div>
+          </div>
+
+          <div class="position-card scroll-reveal delay-1">
+            <span class="pos-icon">📢</span>
+            <div class="pos-details">
+              <h3 class="pos-title">Media Coordinator</h3>
+              <span class="pos-org">Training &amp; Placement Cell, DYPCET</span>
+            </div>
+          </div>
+
+          <div class="position-card scroll-reveal delay-2">
+            <span class="pos-icon">🌟</span>
+            <div class="pos-details">
+              <h3 class="pos-title">Media Head</h3>
+              <span class="pos-org">MLSA (Microsoft Learn Student Ambassadors)</span>
+            </div>
+          </div>
+
+          <div class="position-card scroll-reveal">
+            <span class="pos-icon">💻</span>
+            <div class="pos-details">
+              <h3 class="pos-title">Media Coordinator</h3>
+              <span class="pos-org">Coding Club, DYPCET</span>
+            </div>
+          </div>
+
+          <div class="position-card scroll-reveal delay-1">
+            <span class="pos-icon">⚡</span>
+            <div class="pos-details">
+              <h3 class="pos-title">Media Coordinator</h3>
+              <span class="pos-org">Silicon Student Committee</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="education-section section-padding alt-bg" id="education">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* education.yml */</div>
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-card scroll-reveal">
+          <div class="edu-header">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-titles">
+              <h3 class="institution-name">D.Y. Patil College of Engineering and Technology, Kolhapur</h3>
+              <div class="degree-name">Bachelor of Technology (B.Tech) — Computer Science &amp; Engineering</div>
+            </div>
+            <div class="edu-stat-badge">
+              <span class="stat-lbl">CGPA</span>
+              <span class="stat-num">8.1 / 10</span>
+            </div>
+          </div>
+          <div class="edu-details">
+            <div class="edu-meta">
+              <span class="meta-tag">Period: <strong>2023 – 2027</strong></span>
+              <span class="meta-tag">Stream: <strong>Computer Science &amp; Engineering</strong></span>
+              <span class="meta-tag">Location: <strong>Kolhapur, India</strong></span>
+            </div>
+            <p class="edu-summary">
+              Core Coursework: Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Database Management Systems, Computer Networks, Operating Systems, Software Engineering, AI &amp; Computer Vision.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="achievements-section section-padding" id="achievements">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* wins.txt */</div>
+        <h2 class="section-title">Achievements &amp; Honors</h2>
+        <p class="section-subtitle">Recognition for hackathon wins, project innovation, and competitive technical showcases.</p>
+
+        <div class="achievements-grid">
+          
+          <!-- Win 1: Capstone Project -->
+          <div class="achievement-card gold-badge scroll-reveal">
+            <div class="badge-ribbon">🥇 1st Prize</div>
+            <div class="achievement-icon">💡</div>
+            <h3 class="achievement-title">Capstone Project</h3>
+            <div class="achievement-event">D.Y. Patil College of Engineering and Technology, Kolhapur</div>
+            <p class="achievement-desc">Awarded 1st place for Capstone Project Competition for technical execution, system architecture, and panel presentation.</p>
+          </div>
+
+          <!-- Win 2: Product Shoot Competition -->
+          <div class="achievement-card gold-badge scroll-reveal delay-1">
+            <div class="badge-ribbon">🥇 1st Prize</div>
+            <div class="achievement-icon">📸</div>
+            <h3 class="achievement-title">Product Shoot Competition</h3>
+            <div class="achievement-event">Bharati Vidyapeeth</div>
+            <p class="achievement-desc">First prize winner for creative product media design, photography direction, and presentation aesthetics.</p>
+          </div>
+
+          <!-- Win 3: ADCET Hackathon -->
+          <div class="achievement-card silver-badge scroll-reveal delay-2">
+            <div class="badge-ribbon silver">🥈 2nd Prize</div>
+            <div class="achievement-icon">⚡</div>
+            <h3 class="achievement-title">ADCET National Level Hackathon 2026</h3>
+            <div class="achievement-event">Second Runner-Up</div>
+            <p class="achievement-desc">Secured 2nd Prize / Second Runner-Up at ADCET National Level Hackathon 2026 for rapid solution development.</p>
+          </div>
+
+          <!-- Win 4: KBPCOE Hackathon -->
+          <div class="achievement-card gold-badge scroll-reveal">
+            <div class="badge-ribbon">🥇 1st Prize</div>
+            <div class="achievement-icon">🏆</div>
+            <h3 class="achievement-title">Hackathon</h3>
+            <div class="achievement-event">KBPCOE Satara</div>
+            <p class="achievement-desc">Took 1st Prize in competitive hackathon software development and problem solving under time constraints.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section section-padding alt-bg" id="contact">
+      <div class="container">
+        
+        <div class="section-eyebrow">/* contact.sh */</div>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Interested in placement opportunities, internships, or technical collaborations? Drop a message below!</p>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Form (Left) -->
+          <div class="contact-form-card scroll-reveal">
+            <div class="code-window-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="file-name">send_message.sh</span>
+            </div>
+
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name" class="form-label">$ NAME</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Recruiter / Collaborator" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">$ EMAIL</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="e.g. email@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">$ SUBJECT</label>
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Software Placement / Internship Offer" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">$ MESSAGE</label>
+                <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Type your message here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+              <!-- Status Feedback Banner -->
+              <div class="form-status" id="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <!-- Reach Me Info Card (Right) -->
+          <div class="reach-me-card scroll-reveal delay-1">
+            <div class="reach-header">
+              <span class="reach-icon">📡</span>
+              <h3 class="reach-title">reach.me</h3>
+            </div>
+            
+            <p class="reach-text">
+              I am actively seeking full-time placement and internship positions. Contact me via email or social handles:
+            </p>
+
+            <div class="contact-details-list">
+
+              <div class="contact-detail-item">
+                <span class="detail-icon">✉️</span>
+                <div class="detail-content">
+                  <span class="detail-label">Email</span>
+                  <a href="mailto:sutararya.6336@gmail.com" class="detail-link">sutararya.6336@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <span class="detail-icon">🐙</span>
+                <div class="detail-content">
+                  <span class="detail-label">GitHub</span>
+                  <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="detail-link">github.com/Arya99-as</a>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <span class="detail-icon">💼</span>
+                <div class="detail-content">
+                  <span class="detail-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/arya-sutar-6244942b1" target="_blank" rel="noopener noreferrer" class="detail-link">linkedin.com/in/arya-sutar-6244942b1</a>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <span class="detail-icon">📸</span>
+                <div class="detail-content">
+                  <span class="detail-label">Instagram</span>
+                  <a href="https://www.instagram.com/aryasutar_" target="_blank" rel="noopener noreferrer" class="detail-link">instagram.com/aryasutar_</a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Direct Email Section -->
+            <div class="direct-email-card">
+              <div class="direct-email-header">
+                <span class="direct-email-badge-icon">✉️</span>
+                <div>
+                  <h4 class="direct-email-title">Direct Email</h4>
+                  <p class="direct-email-subtitle">Have a question or opportunity? Send me an email directly.</p>
+                </div>
+              </div>
+
+              <div class="direct-email-actions">
+                <a href="mailto:sutararya.6336@gmail.com" class="direct-email-btn" title="Open default email application">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <span>sutararya.6336@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="availability-notice">
+              <span class="pulse-dot"></span>
+              <span>Available for immediate placement interviews &amp; internships.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- RESUME VIEWER MODAL OVERLAY -->
+  <div class="resume-modal-backdrop" id="resume-modal-backdrop" aria-hidden="true" role="dialog" aria-label="Resume Preview Modal">
+    <div class="resume-modal-card" id="resume-modal-card">
+      <div class="resume-modal-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="file-name">resume.pdf</span>
+        <div class="resume-modal-actions">
+          <a href="assets/resume/Arya_Sutar_Resume.pdf" class="btn-modal-action" download="Arya_Sutar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download</span>
+          </a>
+          <button class="btn-modal-close" id="resume-close-btn" aria-label="Close resume preview">&times;</button>
+        </div>
+      </div>
+      <div class="resume-modal-body">
+        <iframe class="resume-iframe" src="assets/resume/Arya_Sutar_Resume.pdf" title="Arya A. Sutar Resume Preview">
+          <div class="resume-fallback">
+            <p>Your browser can't preview this file — use the Download button below instead.</p>
+            <a href="assets/resume/Arya_Sutar_Resume.pdf" class="btn btn-primary" download="Arya_Sutar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span>Download Resume PDF</span>
+            </a>
+          </div>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMINAL AI ASSISTANT CHAT WIDGET (`ask-arya.sh`) -->
+  <button class="chat-widget-toggle" id="chat-widget-toggle" aria-label="Open ask-arya.sh AI assistant chatbot" aria-expanded="false" aria-controls="chat-widget-panel">
+    <span class="chat-toggle-icon">⚡</span>
+    <span class="chat-toggle-text">ask-arya.sh</span>
+  </button>
+
+  <div class="chat-widget-panel" id="chat-widget-panel" role="dialog" aria-label="ask-arya.sh Terminal Assistant">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="chat-title">ask-arya.sh</span>
+        <span class="speaking-indicator" id="speaking-indicator">
+          <span>🔊</span> <span>Speaking...</span>
+        </span>
+      </div>
+      <div class="chat-controls">
+        <button class="chat-btn-icon" id="chat-voice-toggle" aria-label="Toggle voice output">🔊</button>
+        <button class="chat-btn-icon" id="chat-close-btn" aria-label="Close assistant panel">&times;</button>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chat-messages">
+      <!-- Dynamic chat messages inserted here -->
+    </div>
+
+    <div class="chat-quick-chips">
+      <button class="chip-btn" data-prompt="Tell me about Arya's skills">Skills</button>
+      <button class="chip-btn" data-prompt="What projects has Arya built?">Projects</button>
+      <button class="chip-btn" data-prompt="What is Arya's experience?">Experience</button>
+      <button class="chip-btn" data-prompt="What leadership roles does he hold?">Positions</button>
+      <button class="chip-btn" data-prompt="How can I contact Arya?">Contact</button>
+    </div>
+
+    <div class="chat-input-area">
+      <form class="chat-input-form" id="chat-form">
+        <span class="chat-prompt-prefix">$</span>
+        <input type="text" class="chat-input" id="chat-input" placeholder="Type a question (e.g. skills, projects)..." autocomplete="off">
+        <button type="submit" class="chat-submit-btn" aria-label="Send query">↵</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER (IDE Status Bar Style) -->
+  <footer class="footer-section">
+    <div class="status-bar-container">
+      
+      <!-- Status Chip -->
+      <div class="status-chip">
+        <span class="status-dot"></span>
+        <span class="status-text">available for work</span>
+      </div>
+
+      <!-- Center Brand / Copyright -->
+      <div class="status-center">
+        <span class="status-item">Arya A. Sutar</span>
+        <span class="status-divider">|</span>
+        <span class="status-item">B.Tech Computer Science Engineering</span>
+        <span class="status-divider">|</span>
+        <span class="status-item">&copy; <span id="footer-year">2026</span> All rights reserved</span>
+      </div>
+
+      <!-- Right Quick Links -->
+      <div class="status-links">
+        <a href="https://github.com/Arya99-as" target="_blank" rel="noopener noreferrer" class="status-link">GH</a>
+        <a href="https://www.linkedin.com/in/arya-sutar-6244942b1" target="_blank" rel="noopener noreferrer" class="status-link">IN</a>
+        <a href="mailto:sutararya.6336@gmail.com" class="status-link">EM</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Back To Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top of page">
+    <span class="btt-arrow">↑</span>
+    <span class="btt-text">TOP</span>
+  </button>
+
+  <!-- Data Modules -->
+  <script src="data/projects.js"></script>
+  <script src="data/skills.js"></script>
+  <script src="data/achievements.js"></script>
+  <script src="data/knowledge.js"></script>
+
+  <!-- Modular Application Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
