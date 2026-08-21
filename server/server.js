@@ -28,13 +28,15 @@ connectDB().then(() => {
 });
 
 // Middleware
+const allowedOrigins = process.env.CLIENT_URL ? [process.env.CLIENT_URL, 'http://localhost:5173'] : '*';
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
+  origin: allowedOrigins,
   credentials: true
 }));
 app.use(express.json());
 
 // Serve static frontend files if production build exists
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.static(path.join(__dirname, '..')));
 
 // REST API Endpoints
@@ -57,16 +59,16 @@ app.get('/api/health', (req, res) => {
 // Centralized Error Handler Middleware
 app.use(errorHandler);
 
-const server = app.listen(PORT, () => {
-  console.log(`[Express Backend] Server listening on http://localhost:${PORT}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`[Express Backend] Server listening on port ${PORT}`);
 });
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     const fallbackPort = Number(PORT) + 1;
     console.log(`[Express Backend] Port ${PORT} busy, retrying on port ${fallbackPort}...`);
-    app.listen(fallbackPort, () => {
-      console.log(`[Express Backend] Server listening on http://localhost:${fallbackPort}`);
+    app.listen(fallbackPort, '0.0.0.0', () => {
+      console.log(`[Express Backend] Server listening on port ${fallbackPort}`);
     });
   }
 });
