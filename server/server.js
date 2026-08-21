@@ -50,8 +50,9 @@ app.use('/api/admin', adminRoutes);
 // API Health Check Endpoint
 app.get('/api/health', (req, res) => {
   res.json({
+    success: true,
+    message: 'Portfolio API is running',
     status: 'OK',
-    message: 'Arya A. Sutar Portfolio MERN Backend API running',
     timestamp: new Date().toISOString()
   });
 });
