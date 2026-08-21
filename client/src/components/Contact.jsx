@@ -48,7 +48,7 @@ export function Contact() {
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
       console.warn('Contact API submission error:', err);
-      setStatus({ message: 'Unable to send message. Please try again.', type: 'error' });
+      setStatus({ message: err.message || 'Unable to send message. Please try again.', type: 'error' });
     } finally {
       setLoading(false);
       setTimeout(() => {

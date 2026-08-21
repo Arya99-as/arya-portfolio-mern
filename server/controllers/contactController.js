@@ -77,22 +77,15 @@ export const createContact = async (req, res, next) => {
       savedData = newContact;
     }
 
-    // 6. Deliver email via Nodemailer SMTP
-    try {
-      await sendContactEmail({
-        name: trimmedName,
-        email: trimmedEmail,
-        subject: trimmedSubject,
-        message: trimmedMessage
-      });
-    } catch (smtpErr) {
-      console.error('[SMTP Controller Error]', smtpErr.message || smtpErr);
-      res.status(500);
-      return res.json({
-        success: false,
-        message: 'Unable to send message. Please try again.'
-      });
-    }
+    // 6. Deliver email via Nodemailer SMTP (Asynchronous Background Dispatch)
+    sendContactEmail({
+      name: trimmedName,
+      email: trimmedEmail,
+      subject: trimmedSubject,
+      message: trimmedMessage
+    }).catch(emailErr => {
+      console.error('[SMTP Controller Async Error]', emailErr.message || emailErr);
+    });
 
     return res.status(201).json({
       success: true,
