@@ -3,24 +3,33 @@ import nodemailer from 'nodemailer';
 export const sendContactEmail = async ({ name, email, subject, message }) => {
   const smtpHost = process.env.SMTP_HOST || process.env.MAIL_HOST || 'smtp.gmail.com';
   const smtpPort = Number(process.env.SMTP_PORT || process.env.MAIL_PORT) || 587;
-  const smtpSecure = process.env.SMTP_SECURE === 'true';
-  const smtpUser = process.env.SMTP_USER || process.env.MAIL_USER;
-  const smtpPassword = process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD;
-  const contactEmail = process.env.CONTACT_EMAIL || 'sutararya.6336@gmail.com';
+  const smtpUser = (process.env.SMTP_USER || process.env.MAIL_USER || 'sutararya.6336@gmail.com').trim();
+  const smtpPassword = (process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD || 'qqsupuopzvkwglry').trim().replace(/["'\s]/g, '');
+  const contactEmail = (process.env.CONTACT_EMAIL || 'sutararya.6336@gmail.com').trim();
 
   const isPlaceholderPassword = !smtpPassword || smtpPassword.includes('your-app-password') || smtpPassword.includes('your_gmail_app_password');
 
   if (smtpUser && smtpPassword && !isPlaceholderPassword) {
     try {
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: smtpSecure, // false for 587 (STARTTLS), true for 465
-        auth: {
-          user: smtpUser,
-          pass: smtpPassword
-        }
-      });
+      const transporterConfig = smtpHost.includes('gmail')
+        ? {
+            service: 'gmail',
+            auth: {
+              user: smtpUser,
+              pass: smtpPassword
+            }
+          }
+        : {
+            host: smtpHost,
+            port: smtpPort,
+            secure: process.env.SMTP_SECURE === 'true' || smtpPort === 465,
+            auth: {
+              user: smtpUser,
+              pass: smtpPassword
+            }
+          };
+
+      const transporter = nodemailer.createTransport(transporterConfig);
 
       const plainTextBody = `================================\nNEW PORTFOLIO CONTACT\n================================\n\nName:\n${name}\n\nEmail:\n${email}\n\nSubject:\n${subject}\n\nMessage:\n\n${message}\n\n================================`;
 
