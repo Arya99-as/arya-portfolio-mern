@@ -64,7 +64,7 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
         const transporter = nodemailer.createTransport(config);
         const info = await transporter.sendMail(mailOptions);
         console.log(`[SMTP Email Service] Email delivered successfully to ${contactEmail}. Message ID: ${info.messageId}`);
-        return true;
+        return { success: true, messageId: info.messageId, accepted: info.accepted, rejected: info.rejected };
       } catch (err) {
         lastError = err;
         console.warn(`[SMTP Transport Attempt Failed] ${err.message}. Trying next configuration...`);
@@ -75,6 +75,6 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
     throw new Error(`SMTP Delivery Failed: ${lastError?.message}`);
   } else {
     console.log(`[SMTP Email Service Notification] Saved message to MongoDB for ${name} (${email}). To activate real SMTP delivery to ${contactEmail}, set SMTP_USER and SMTP_PASSWORD in server/.env.`);
-    return true;
+    return { success: true, messageId: null, note: 'Saved to DB without SMTP configuration' };
   }
 };
