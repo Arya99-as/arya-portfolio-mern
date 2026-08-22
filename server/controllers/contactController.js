@@ -90,9 +90,7 @@ export const createContact = async (req, res, next) => {
       emailDelivered = emailResult?.success || false;
       messageId = emailResult?.messageId || null;
     } catch (emailErr) {
-      console.error('[SMTP Controller Error]', emailErr.message || emailErr);
-      res.status(500);
-      throw new Error('Unable to send message. Please try again.');
+      console.warn('[SMTP Controller Warning] Email notification dispatch warning:', emailErr.message || emailErr);
     }
 
     return res.status(201).json({
