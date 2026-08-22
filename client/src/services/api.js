@@ -58,21 +58,37 @@ export const fetchStats = async () => {
   return data.data || data;
 };
 
-// 5. Contact API
+// 5. Contact API (With automatic retry for Render server cold-starts)
 export const submitContactForm = async (contactData) => {
-  const response = await fetch(`${API_BASE_URL}/contact`, {
+  const url = `${API_BASE_URL}/contact`;
+  const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(contactData)
-  });
+  };
 
-  const data = await safeJsonParse(response, 'Failed to send message');
-  if (!response.ok) {
-    throw new Error(data.message || 'Failed to send message');
+  try {
+    const response = await fetch(url, options);
+    const data = await safeJsonParse(response, 'Failed to send message');
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to send message');
+    }
+    return data;
+  } catch (err) {
+    if (err.message && (err.message.toLowerCase().includes('fetch') || err.message.toLowerCase().includes('network'))) {
+      console.log('[Contact API] Retrying submission to wake up backend server...');
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const retryResponse = await fetch(url, options);
+      const retryData = await safeJsonParse(retryResponse, 'Failed to send message');
+      if (!retryResponse.ok) {
+        throw new Error(retryData.message || 'Failed to send message');
+      }
+      return retryData;
+    }
+    throw err;
   }
-  return data;
 };
 
 // 6. Admin Authentication & Management APIs

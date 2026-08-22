@@ -52,6 +52,7 @@ app.use(cors({
   },
   credentials: true
 }));
+app.options('*', cors());
 app.use(express.json());
 
 // Serve static frontend files if production build exists
