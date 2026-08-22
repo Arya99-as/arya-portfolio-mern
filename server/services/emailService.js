@@ -4,12 +4,16 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
   const smtpHost = process.env.SMTP_HOST || process.env.MAIL_HOST || 'smtp.gmail.com';
   const smtpPort = Number(process.env.SMTP_PORT || process.env.MAIL_PORT) || 587;
   const smtpUser = (process.env.SMTP_USER || process.env.MAIL_USER || 'sutararya.6336@gmail.com').trim();
-  const smtpPassword = (process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD || 'qqsupuopzvkwglry').trim().replace(/["'\s]/g, '');
+  let smtpPassword = (process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD || 'qqsupuopzvkwglry').trim().replace(/["'\s]/g, '');
   const contactEmail = (process.env.CONTACT_EMAIL || 'sutararya.6336@gmail.com').trim();
 
-  const isPlaceholderPassword = !smtpPassword || smtpPassword.includes('your-app-password') || smtpPassword.includes('your_gmail_app_password');
+  // If environment variable is a placeholder text, fallback to verified working App Password
+  const isPlaceholder = !smtpPassword || smtpPassword.toLowerCase().includes('your') || smtpPassword.toLowerCase().includes('placeholder');
+  if (isPlaceholder) {
+    smtpPassword = 'qqsupuopzvkwglry';
+  }
 
-  if (smtpUser && smtpPassword && !isPlaceholderPassword) {
+  if (smtpUser && smtpPassword) {
     const plainTextBody = `================================\nNEW PORTFOLIO CONTACT\n================================\n\nName:\n${name}\n\nEmail:\n${email}\n\nSubject:\n${subject}\n\nMessage:\n\n${message}\n\n================================`;
 
     const htmlBody = `
