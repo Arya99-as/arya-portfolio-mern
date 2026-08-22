@@ -58,14 +58,7 @@ export const createContact = async (req, res, next) => {
     }
     lastSubmissionMap.set(clientKey, now);
 
-    // 5. Store message in MongoDB
-    const newContact = {
-      name: trimmedName,
-      email: trimmedEmail,
-      subject: trimmedSubject,
-      message: trimmedMessage
-    };
-
+    // 5. Store message in MongoDB Atlas (Instant DB Save)
     console.log('[Contact API] CONTACT REQUEST RECEIVED:', { name: trimmedName, email: trimmedEmail, subject: trimmedSubject });
 
     let savedData;
@@ -78,33 +71,25 @@ export const createContact = async (req, res, next) => {
       newContact.createdAt = new Date().toISOString();
       inMemoryContacts.unshift(newContact);
       savedData = newContact;
-      console.log('[Contact API] CONTACT SAVED TO DATABASE (In-Memory Fallback):', savedData._id);
     }
 
-    // 6. Deliver email via Nodemailer SMTP
-    console.log('[Contact API] ATTEMPTING SMTP SEND...');
-    let emailDelivered = false;
-    let messageId = null;
-    try {
-      const emailResult = await sendContactEmail({
-        name: trimmedName,
-        email: trimmedEmail,
-        subject: trimmedSubject,
-        message: trimmedMessage
-      });
-      emailDelivered = emailResult?.success || false;
-      messageId = emailResult?.messageId || null;
-      console.log('[Contact API] SMTP SEND RESULT:', { emailDelivered, messageId });
-    } catch (emailErr) {
-      console.error('[Contact API] SMTP Controller Error:', emailErr.message || emailErr);
-    }
-
-    return res.status(201).json({
+    // 6. Return INSTANT success response to client (Zero UI lag!)
+    res.status(201).json({
       success: true,
       message: 'Message sent successfully!',
-      emailDelivered,
-      messageId,
       data: savedData
+    });
+
+    // 7. Dispatch Nodemailer Gmail SMTP notification in background
+    sendContactEmail({
+      name: trimmedName,
+      email: trimmedEmail,
+      subject: trimmedSubject,
+      message: trimmedMessage
+    }).then(result => {
+      console.log('[Contact API Async SMTP Result]:', result);
+    }).catch(emailErr => {
+      console.error('[Contact API Async SMTP Error]:', emailErr.message || emailErr);
     });
   } catch (error) {
     next(error);
