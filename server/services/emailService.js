@@ -39,10 +39,16 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
 
     const configs = [
       {
+        service: 'gmail',
+        auth: { user: smtpUser, pass: smtpPassword },
+        tls: { rejectUnauthorized: false }
+      },
+      {
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: { user: smtpUser, pass: smtpPassword },
+        tls: { rejectUnauthorized: false },
         connectionTimeout: 8000,
         greetingTimeout: 8000,
         socketTimeout: 8000
@@ -52,13 +58,10 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
         port: 587,
         secure: false,
         auth: { user: smtpUser, pass: smtpPassword },
+        tls: { rejectUnauthorized: false },
         connectionTimeout: 8000,
         greetingTimeout: 8000,
         socketTimeout: 8000
-      },
-      {
-        service: 'gmail',
-        auth: { user: smtpUser, pass: smtpPassword }
       }
     ];
 
