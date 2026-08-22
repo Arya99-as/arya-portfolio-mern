@@ -28,9 +28,26 @@ connectDB().then(() => {
 });
 
 // Middleware
-const allowedOrigins = process.env.CLIENT_URL ? [process.env.CLIENT_URL, 'http://localhost:5173'] : '*';
+const rawClientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.trim().replace(/\/$/, '') : '';
+const defaultAllowed = [
+  'https://arya-portfolio-mern.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:5050'
+];
+
+if (rawClientUrl && !defaultAllowed.includes(rawClientUrl)) {
+  defaultAllowed.push(rawClientUrl);
+}
+
 app.use(cors({
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.trim().replace(/\/$/, '');
+    if (defaultAllowed.includes(cleanOrigin) || cleanOrigin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
