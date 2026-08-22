@@ -91,6 +91,8 @@ export const createContact = async (req, res, next) => {
       messageId = emailResult?.messageId || null;
     } catch (emailErr) {
       console.error('[SMTP Controller Error]', emailErr.message || emailErr);
+      res.status(500);
+      throw new Error('Unable to send message. Please try again.');
     }
 
     return res.status(201).json({
