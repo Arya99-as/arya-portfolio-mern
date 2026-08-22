@@ -77,7 +77,7 @@ export const createContact = async (req, res, next) => {
       savedData = newContact;
     }
 
-    // 6. Deliver email via Nodemailer SMTP (Awaited for guaranteed execution)
+    // 6. Deliver email via Nodemailer SMTP (Graceful execution)
     let emailDelivered = false;
     let messageId = null;
     try {
@@ -90,7 +90,7 @@ export const createContact = async (req, res, next) => {
       emailDelivered = emailResult?.success || false;
       messageId = emailResult?.messageId || null;
     } catch (emailErr) {
-      console.warn('[SMTP Controller Warning] Email notification dispatch warning:', emailErr.message || emailErr);
+      console.error('[SMTP Controller Error]', emailErr.message || emailErr);
     }
 
     return res.status(201).json({

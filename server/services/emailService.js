@@ -1,19 +1,23 @@
 import nodemailer from 'nodemailer';
 
 export const sendContactEmail = async ({ name, email, subject, message }) => {
-  const smtpHost = process.env.SMTP_HOST || process.env.MAIL_HOST || 'smtp.gmail.com';
-  const smtpPort = Number(process.env.SMTP_PORT || process.env.MAIL_PORT) || 587;
-  const smtpUser = (process.env.SMTP_USER || process.env.MAIL_USER || 'sutararya.6336@gmail.com').trim();
-  let smtpPassword = (process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD || 'qqsupuopzvkwglry').trim().replace(/["'\s]/g, '');
+  const smtpUser = (process.env.SMTP_USER || 'sutararya.6336@gmail.com').trim();
+  let smtpPassword = (process.env.SMTP_PASSWORD || 'qqsupuopzvkwglry').trim().replace(/["'\s]/g, '');
   const contactEmail = (process.env.CONTACT_EMAIL || 'sutararya.6336@gmail.com').trim();
 
-  // If environment variable is a placeholder text, fallback to verified working App Password
-  const isPlaceholder = !smtpPassword || smtpPassword.toLowerCase().includes('your') || smtpPassword.toLowerCase().includes('placeholder');
-  if (isPlaceholder) {
+  if (!smtpPassword || smtpPassword.toLowerCase().includes('your') || smtpPassword.toLowerCase().includes('placeholder')) {
     smtpPassword = 'qqsupuopzvkwglry';
   }
 
-  if (smtpUser && smtpPassword) {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: smtpUser,
+        pass: smtpPassword
+      }
+    });
+
     const plainTextBody = `================================\nNEW PORTFOLIO CONTACT\n================================\n\nName:\n${name}\n\nEmail:\n${email}\n\nSubject:\n${subject}\n\nMessage:\n\n${message}\n\n================================`;
 
     const htmlBody = `
@@ -37,51 +41,11 @@ export const sendContactEmail = async ({ name, email, subject, message }) => {
       html: htmlBody
     };
 
-    const configs = [
-      {
-        service: 'gmail',
-        auth: { user: smtpUser, pass: smtpPassword },
-        tls: { rejectUnauthorized: false }
-      },
-      {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: { user: smtpUser, pass: smtpPassword },
-        tls: { rejectUnauthorized: false },
-        connectionTimeout: 8000,
-        greetingTimeout: 8000,
-        socketTimeout: 8000
-      },
-      {
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: { user: smtpUser, pass: smtpPassword },
-        tls: { rejectUnauthorized: false },
-        connectionTimeout: 8000,
-        greetingTimeout: 8000,
-        socketTimeout: 8000
-      }
-    ];
-
-    let lastError = null;
-    for (const config of configs) {
-      try {
-        const transporter = nodemailer.createTransport(config);
-        const info = await transporter.sendMail(mailOptions);
-        console.log(`[SMTP Email Service] Email delivered successfully to ${contactEmail}. Message ID: ${info.messageId}`);
-        return { success: true, messageId: info.messageId, accepted: info.accepted, rejected: info.rejected };
-      } catch (err) {
-        lastError = err;
-        console.warn(`[SMTP Transport Attempt Failed] ${err.message}. Trying next configuration...`);
-      }
-    }
-
-    console.error(`[SMTP Email Service Error] All delivery attempts failed: ${lastError?.message}`);
-    throw new Error(`SMTP Delivery Failed: ${lastError?.message}`);
-  } else {
-    console.log(`[SMTP Email Service Notification] Saved message to MongoDB for ${name} (${email}). To activate real SMTP delivery to ${contactEmail}, set SMTP_USER and SMTP_PASSWORD in server/.env.`);
-    return { success: true, messageId: null, note: 'Saved to DB without SMTP configuration' };
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`[SMTP Email Service] Delivered to ${contactEmail}. Message ID: ${info.messageId}`);
+    return { success: true, messageId: info.messageId };
+  } catch (err) {
+    console.error(`[SMTP Email Service Error] ${err.message}`);
+    return { success: false, error: err.message };
   }
 };
