@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 
 import { connectDB } from './config/db.js';
 import { initSingleOwnerAdmin } from './config/initAdmin.js';
+import { verifySMTPConnection } from './services/emailService.js';
 import projectRoutes from './routes/projectRoutes.js';
 import achievementRoutes from './routes/achievementRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
@@ -22,9 +23,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-// Connect Database & Initialize Admin Owner Account
+// Connect Database, Initialize Admin & Verify SMTP Connection
 connectDB().then(() => {
   initSingleOwnerAdmin();
+  verifySMTPConnection();
 });
 
 // Middleware

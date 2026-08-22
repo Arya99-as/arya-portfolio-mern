@@ -66,18 +66,23 @@ export const createContact = async (req, res, next) => {
       message: trimmedMessage
     };
 
+    console.log('[Contact API] CONTACT REQUEST RECEIVED:', { name: trimmedName, email: trimmedEmail, subject: trimmedSubject });
+
     let savedData;
     try {
       savedData = await Contact.create(newContact);
+      console.log('[Contact API] CONTACT SAVED TO DATABASE (MongoDB Atlas):', savedData._id);
     } catch (dbErr) {
       console.warn('[Contact Controller DB Warning] MongoDB write fallback:', dbErr.message);
       newContact._id = Date.now().toString();
       newContact.createdAt = new Date().toISOString();
       inMemoryContacts.unshift(newContact);
       savedData = newContact;
+      console.log('[Contact API] CONTACT SAVED TO DATABASE (In-Memory Fallback):', savedData._id);
     }
 
-    // 6. Deliver email via Nodemailer SMTP (Graceful execution)
+    // 6. Deliver email via Nodemailer SMTP
+    console.log('[Contact API] ATTEMPTING SMTP SEND...');
     let emailDelivered = false;
     let messageId = null;
     try {
@@ -89,8 +94,9 @@ export const createContact = async (req, res, next) => {
       });
       emailDelivered = emailResult?.success || false;
       messageId = emailResult?.messageId || null;
+      console.log('[Contact API] SMTP SEND RESULT:', { emailDelivered, messageId });
     } catch (emailErr) {
-      console.error('[SMTP Controller Error]', emailErr.message || emailErr);
+      console.error('[Contact API] SMTP Controller Error:', emailErr.message || emailErr);
     }
 
     return res.status(201).json({
