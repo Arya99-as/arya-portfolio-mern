@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7D070" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA7C11" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2A6C" />
+      <stop offset="50%" stop-color="#0B132B" />
+      <stop offset="100%" stop-color="#040814" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Circle Shield -->
+  <circle cx="150" cy="150" r="140" fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="8" filter="url(#glow)"/>
+  <circle cx="150" cy="150" r="126" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- Heraldic Ribbon Banner -->
+  <path d="M 40 215 C 90 235 210 235 260 215 L 250 245 C 190 260 110 260 50 245 Z" fill="url(#goldGrad)" stroke="#553A00" stroke-width="1.5"/>
+  <text x="150" y="236" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="700" font-size="16" fill="#0B132B" text-anchor="middle" letter-spacing="2">ESTD. 1984</text>
+
+  <!-- Central Academic Torch & Crest -->
+  <g transform="translate(150, 115)">
+    <!-- Torch Flame -->
+    <path d="M 0 -45 C 15 -25 5 -10 0 0 C -5 -10 -15 -25 0 -45 Z" fill="#FF5722"/>
+    <path d="M 0 -35 C 8 -20 3 -8 0 0 C -3 -8 -8 -20 0 -35 Z" fill="#FFC107"/>
+    <!-- Torch Handle -->
+    <path d="M -8 0 L 8 0 L 5 35 L -5 35 Z" fill="url(#goldGrad)"/>
+    <rect x="-10" y="-3" width="20" height="6" rx="2" fill="#D4AF37"/>
+  </g>
+
+  <!-- Academic Laurel Leaves (Left & Right) -->
+  <path d="M 65 140 Q 60 100 85 80 Q 95 105 75 140 Z" fill="url(#goldGrad)" opacity="0.85"/>
+  <path d="M 235 140 Q 240 100 215 80 Q 205 105 225 140 Z" fill="url(#goldGrad)" opacity="0.85"/>
+
+  <!-- Typography: DYPCET -->
+  <text x="150" y="70" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="800" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">DYPCET</text>
+  <text x="150" y="180" font-family="'Inter', sans-serif" font-weight="600" font-size="11" fill="#E2E8F0" text-anchor="middle" letter-spacing="1">D Y PATIL COLLEGE OF</text>
+  <text x="150" y="195" font-family="'Inter', sans-serif" font-weight="600" font-size="11" fill="#E2E8F0" text-anchor="middle" letter-spacing="1">ENGINEERING &amp; TECHNOLOGY</text>
+</svg>

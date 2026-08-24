@@ -59,7 +59,12 @@ export const createContact = async (req, res, next) => {
     lastSubmissionMap.set(clientKey, now);
 
     // 5. Store message in MongoDB Atlas (Instant DB Save)
-    console.log('[Contact API] CONTACT REQUEST RECEIVED:', { name: trimmedName, email: trimmedEmail, subject: trimmedSubject });
+    const newContact = {
+      name: trimmedName,
+      email: trimmedEmail,
+      subject: trimmedSubject,
+      message: trimmedMessage
+    };
 
     let savedData;
     try {
