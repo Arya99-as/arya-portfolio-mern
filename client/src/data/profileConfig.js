@@ -22,14 +22,14 @@ export const profileConfig = {
     estInfo: "Est- 1984, First College of D Y Patil Group.",
     shortName: "DYPCET",
     location: "Kasaba Bawada, Kolhapur",
-    website: "" // Official website URL if available
+    website: ""
   },
 
-  // Contact Information (Leave empty "" to automatically hide the corresponding contact button)
+  // Contact Information — REAL DATA
   contact: {
-    phone: "",      // e.g. "+919876543210" or ""
-    whatsapp: "",   // e.g. "919876543210" or ""
-    email: ""       // e.g. "tpo@dypgroup.edu.in" or ""
+    phone: "+917798203060",
+    whatsapp: "917798203060",
+    email: "tpo@dypgroup.org"
   },
 
   // Social Media Platforms
@@ -42,7 +42,6 @@ export const profileConfig = {
   // Visual Assets
   assets: {
     profileImage: "/assets/images/profile/makrand_kaingade.jpg",
-    dypcetLogo: "/assets/images/logo/dypcet_official_logo.png",
     vcardFilename: "Makrand_Kaingade.vcf",
     qrFilename: "makrand-kaingade-qr.png"
   }

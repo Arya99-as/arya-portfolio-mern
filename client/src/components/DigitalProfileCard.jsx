@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { profileConfig } from '../data/profileConfig';
+import '../digitalCard.css';
 
 export function DigitalProfileCard() {
   const [profileUrl, setProfileUrl] = useState('');
@@ -29,13 +30,13 @@ export function DigitalProfileCard() {
       'BEGIN:VCARD',
       'VERSION:3.0',
       `FN:${profileConfig.name}`,
-      `N:${profileConfig.name.split(' ').pop() || 'Kaingade'};${profileConfig.name.split(' ')[1] || 'Makrand'};;;`,
+      `N:Kaingade;Makrand;Sambhajirao;;`,
       `ORG:${profileConfig.organization}`,
       `TITLE:${profileConfig.designation}`,
       profileConfig.contact.phone ? `TEL;TYPE=CELL:${profileConfig.contact.phone}` : '',
       profileConfig.contact.email ? `EMAIL;TYPE=INTERNET:${profileConfig.contact.email}` : '',
       `NOTE:${profileConfig.bio} ${profileConfig.dypcet.estInfo}`,
-      `URL:${profileConfig.socials.linkedin || profileUrl}`,
+      `URL:${profileUrl || profileConfig.socials.linkedin}`,
       'END:VCARD'
     ].filter(Boolean).join('\r\n');
 
@@ -95,7 +96,6 @@ export function DigitalProfileCard() {
       navigator.clipboard.writeText(profileUrl);
       triggerToast('✓ Link copied to clipboard!');
     } else {
-      // Fallback
       const input = document.createElement('input');
       input.value = profileUrl;
       document.body.appendChild(input);
@@ -119,37 +119,22 @@ export function DigitalProfileCard() {
 
       <div className="card-outer-container">
         
-        {/* 2. PROFILE HERO SECTION */}
+        {/* 2. PROFILE HERO SECTION — NO LOGO, ONLY PHOTO + INFO */}
         <section className="profile-hero-card">
-          {/* Main Focal Profile Image */}
           <div className="hero-photo-wrapper">
             <img
               src={profileConfig.assets.profileImage}
               alt={profileConfig.name}
               className="hero-profile-photo"
               onError={(e) => {
-                // Fallback placeholder gradient image
                 e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800"><rect width="600" height="800" fill="%230B132B"/><text x="300" y="400" fill="%23D4AF37" font-family="sans-serif" font-size="28" text-anchor="middle">Mr. Makrand Kaingade</text></svg>';
               }}
             />
             
-            {/* Multi-stage Professional Gradient Overlay */}
+            {/* Professional Dark Gradient Overlay */}
             <div className="hero-gradient-overlay"></div>
 
-            {/* DYPCET Organization Crest Badge (Top-Left) */}
-            <div className="dypcet-badge-container">
-              <img
-                src={profileConfig.assets.dypcetLogo}
-                alt="DYPCET College Emblem Logo"
-                className="dypcet-badge-logo"
-              />
-              <div className="dypcet-badge-info">
-                <span className="badge-org-title">DYPCET</span>
-                <span className="badge-org-est">ESTD. 1984</span>
-              </div>
-            </div>
-
-            {/* Overlaid Hero Content (Bottom Typography) */}
+            {/* Hero Typography Content (Bottom) */}
             <div className="hero-typography-content">
               <div className="hero-tpo-pill">
                 <span className="tpo-pulse"></span>
@@ -171,7 +156,7 @@ export function DigitalProfileCard() {
         <section className="contact-actions-section">
           <div className="contact-buttons-grid">
             
-            {/* Call Button (Rendered only if phone provided) */}
+            {/* Call Button */}
             {profileConfig.contact.phone && (
               <a href={`tel:${profileConfig.contact.phone}`} className="contact-action-btn btn-call" aria-label="Call">
                 <div className="btn-icon-wrapper">
@@ -181,7 +166,7 @@ export function DigitalProfileCard() {
               </a>
             )}
 
-            {/* WhatsApp Button (Rendered only if whatsapp provided) */}
+            {/* WhatsApp Button */}
             {profileConfig.contact.whatsapp && (
               <a
                 href={`https://wa.me/${profileConfig.contact.whatsapp.replace(/[^0-9]/g, '')}`}
@@ -197,7 +182,7 @@ export function DigitalProfileCard() {
               </a>
             )}
 
-            {/* Email Button (Rendered only if email provided) */}
+            {/* Email Button */}
             {profileConfig.contact.email && (
               <a href={`mailto:${profileConfig.contact.email}`} className="contact-action-btn btn-email" aria-label="Email">
                 <div className="btn-icon-wrapper">
@@ -207,7 +192,7 @@ export function DigitalProfileCard() {
               </a>
             )}
 
-            {/* Save Contact vCard Button (Always available) */}
+            {/* Save Contact vCard Button */}
             <button type="button" onClick={handleSaveContact} className="contact-action-btn btn-vcard" aria-label="Save Contact">
               <div className="btn-icon-wrapper">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
@@ -218,7 +203,43 @@ export function DigitalProfileCard() {
           </div>
         </section>
 
-        {/* 4. PROFESSIONAL INFORMATION SECTION */}
+        {/* 4. CONTACT INFORMATION DISPLAY — Clickable Phone & Email */}
+        <section className="info-card-section contact-info-section">
+          <div className="section-card-header">
+            <span className="header-icon">📱</span>
+            <h3 className="section-card-title">Contact Information</h3>
+          </div>
+
+          <div className="contact-info-list">
+            {profileConfig.contact.phone && (
+              <a href={`tel:${profileConfig.contact.phone}`} className="contact-info-row">
+                <div className="contact-info-icon phone-icon-bg">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div className="contact-info-detail">
+                  <span className="contact-info-label">Phone</span>
+                  <span className="contact-info-value">+91 7798203060</span>
+                </div>
+                <span className="contact-info-arrow">→</span>
+              </a>
+            )}
+
+            {profileConfig.contact.email && (
+              <a href={`mailto:${profileConfig.contact.email}`} className="contact-info-row">
+                <div className="contact-info-icon email-icon-bg">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div className="contact-info-detail">
+                  <span className="contact-info-label">Email</span>
+                  <span className="contact-info-value">tpo@dypgroup.org</span>
+                </div>
+                <span className="contact-info-arrow">→</span>
+              </a>
+            )}
+          </div>
+        </section>
+
+        {/* 5. PROFESSIONAL INFORMATION SECTION */}
         <section className="info-card-section">
           <div className="section-card-header">
             <span className="header-icon">💼</span>
@@ -257,23 +278,6 @@ export function DigitalProfileCard() {
               <p className="row-bio-text">{profileConfig.bio}</p>
             </div>
 
-          </div>
-        </section>
-
-        {/* 5. DYPCET COLLEGE INFORMATION SECTION */}
-        <section className="info-card-section dypcet-section">
-          <div className="section-card-header">
-            <span className="header-icon">🎓</span>
-            <h3 className="section-card-title">DYPCET Information</h3>
-          </div>
-
-          <div className="dypcet-content-card">
-            <div className="dypcet-gold-badge">{profileConfig.dypcet.estInfo}</div>
-            <h4 className="dypcet-college-name">{profileConfig.dypcet.fullName}</h4>
-            <p className="dypcet-location-tag">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>{profileConfig.dypcet.location}</span>
-            </p>
           </div>
         </section>
 
@@ -343,7 +347,24 @@ export function DigitalProfileCard() {
           </div>
         </section>
 
-        {/* 7. SCAN QR & SHARE PROFILE SECTION */}
+        {/* 7. DYPCET COLLEGE INFORMATION SECTION (Text only, no logo) */}
+        <section className="info-card-section dypcet-section">
+          <div className="section-card-header">
+            <span className="header-icon">🎓</span>
+            <h3 className="section-card-title">DYPCET Information</h3>
+          </div>
+
+          <div className="dypcet-content-card">
+            <div className="dypcet-gold-badge">{profileConfig.dypcet.estInfo}</div>
+            <h4 className="dypcet-college-name">{profileConfig.dypcet.fullName}</h4>
+            <p className="dypcet-location-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>{profileConfig.dypcet.location}</span>
+            </p>
+          </div>
+        </section>
+
+        {/* 8. SCAN QR & SHARE PROFILE SECTION */}
         <section className="info-card-section qr-section">
           <div className="section-card-header">
             <span className="header-icon">📷</span>
@@ -355,7 +376,7 @@ export function DigitalProfileCard() {
             {/* Real High-Resolution Scannable QR Code */}
             <div className="qr-code-box" ref={qrRef}>
               <QRCodeCanvas
-                value={profileUrl || 'https://dypgroup.edu.in'}
+                value={profileUrl || 'https://makrand-kaingade.netlify.app'}
                 size={220}
                 bgColor="#FFFFFF"
                 fgColor="#0B132B"
@@ -371,7 +392,7 @@ export function DigitalProfileCard() {
 
             <div className="qr-url-pill">
               <span className="link-icon">🔗</span>
-              <span className="url-text">{profileUrl || 'https://dypgroup.edu.in'}</span>
+              <span className="url-text">{profileUrl || 'https://makrand-kaingade.netlify.app'}</span>
             </div>
 
             {/* QR & Share Action Buttons */}
@@ -397,7 +418,7 @@ export function DigitalProfileCard() {
           </div>
         </section>
 
-        {/* 8. PROFESSIONAL FOOTER */}
+        {/* 9. PROFESSIONAL FOOTER */}
         <footer className="digital-card-footer">
           <p className="footer-org">{profileConfig.organization}</p>
           <p className="footer-copyright">Digital Professional Profile • Smart Visiting Card</p>
